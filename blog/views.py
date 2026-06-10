@@ -9,7 +9,7 @@ from .models import Post
    # queryset = Post.objects.filter(author=3)
 
 class PostList(generic.ListView):
-    queryset = Post.objects.filter(status=0)
+    queryset = Post.objects.filter(status=1)
     #template_name = "post_list.html"
     template_name = "blog/index.html"
-    paginate_by = 6
+    paginate_by = 3
