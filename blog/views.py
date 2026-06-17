@@ -36,13 +36,15 @@ def post_detail(request, slug):
     
 if request.method == "POST":
     comment_form = CommentForm(data=request.POST)
+    
     if comment_form.is_valid():
         comment = comment_form.save(commit=False)
         comment.author = request.user
         comment.post = post
         comment.save()
+    else:
+        comment_form = CommentForm()
 
-    comment_form = CommentForm()
 
     return render(
         request,
